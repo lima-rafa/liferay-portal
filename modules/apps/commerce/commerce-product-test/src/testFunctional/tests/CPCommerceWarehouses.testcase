@@ -113,25 +113,24 @@ definition {
 	@description = "This is a test for COMMERCE-6205. Get warehouse names given a SKU"
 	@priority = "3"
 	test GetWarehouseNameGivenChannel {
-        property portal.acceptance = "false";
+		property portal.acceptance = "false";
 
-        CommerceNavigator.gotoPortlet(
-            category = "Inventory Management",
-            portlet = "Warehouses");
+		CommerceNavigator.gotoPortlet(
+			category = "Inventory Management",
+			portlet = "Warehouses");
 
-        Click(locator1 = "Button#PLUS");
-		
+		Click(locator1 = "Button#PLUS");
 
-        Type(
-            key_fieldLabel="Name",
-            value1="TestWH",
-            locator1="TextInput#GENERIC_TEXT_INPUT");
+		Type(
+			key_fieldLabel = "Name",
+			locator1 = "TextInput#GENERIC_TEXT_INPUT",
+			value1 = "TestWH");
 
-        Button.clickSave();
+		Button.clickSave();
 
-        CommerceNavigator.gotoPortlet(
-            category = "Product Management",
-            portlet = "Catalogs");
+		CommerceNavigator.gotoPortlet(
+			category = "Product Management",
+			portlet = "Catalogs");
 
 		Click(locator1 = "Button#PLUS");
 
@@ -146,25 +145,25 @@ definition {
 
 		Refresh();
 
-        CommerceNavigator.gotoPortlet(
-            category = "Product Management",
-            portlet = "Products");
+		CommerceNavigator.gotoPortlet(
+			category = "Product Management",
+			portlet = "Products");
 
-	   CPCommerceCatalog.newProductsEntry(
-		    productCatalog = "Master",
+		CPCommerceCatalog.newProductsEntry(
+			productCatalog = "Master",
 			productName = "Product Test",
 			productType = "Simple");
 
-	   CommerceEntry.gotoMenuTab(menuTab = "SKUs");
+		CommerceEntry.gotoMenuTab(menuTab = "SKUs");
 
-	   Click(locator1 = "Button#PLUS");
+		Click(locator1 = "Button#PLUS");
 
-	   SelectFrame.selectFrameNoLoading(locator1 = "CommerceEntry#IFRAME_SIDE_PANEL");   
+		SelectFrame.selectFrameNoLoading(locator1 = "CommerceEntry#IFRAME_SIDE_PANEL");
 
-	   Type(
-            key_fieldLabel="SKU",
-            value1="MIN00000",
-            locator1="TextInput#GENERIC_TEXT_INPUT");
+		Type(
+			key_fieldLabel = "SKU",
+			locator1 = "TextInput#GENERIC_TEXT_INPUT",
+			value1 = "MIN00000");
 
 		Button.clickPublish();
 
@@ -172,28 +171,27 @@ definition {
 
 		Type(
 			key_value1 = "0",
-			value1="45",
-			locator1 = "CommerceEntry#WAREHOUSE_INVENTORY_ITEM_QUANTITY");
+			locator1 = "CommerceEntry#WAREHOUSE_INVENTORY_ITEM_QUANTITY",
+			value1 = "45");
 
 		Click(
 			key_value1 = "0",
 			locator1 = "CommerceEntry#WAREHOUSE_INVENTORY_SAVE_BUTTON");
-			
+
 		Refresh();
 
 		CommerceNavigator.gotoPortlet(
-            category = "Inventory Management",
-            portlet = "Inventory");
+			category = "Inventory Management",
+			portlet = "Inventory");
 
 		Click(
-    		key_entryName = "MIN00000",
-    		locator1 = "CommerceEntry#TABLE_LIST_TITLE");
+			key_entryName = "MIN00000",
+			locator1 = "CommerceEntry#TABLE_LIST_TITLE");
 
 		AssertTextEquals(
 			locator1 = "CommerceEntry#INVENTORY_BY_WAREHOUSE_NAME",
 			value1 = "TestWH");
-
-    }
+	}
 
 	@description = "This is a test for COMMERCE-6202. It should be possible to limit the warehouse stock quantity by channel"
 	@ignore = "true"
