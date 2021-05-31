@@ -681,6 +681,18 @@ definition {
 		AssertElementPresent(locator1 = "Form#ALT_PAGINATION_SUCCESS_PAGE");
 	}
 
+	macro viewFieldReference {
+		key_fieldLabel = "${fieldLabel}";
+
+		FormViewBuilder.clickFieldLabel(fieldLabel = "${key_fieldLabel}");
+
+		Form.gotoAdvancedTab();
+
+		AssertTextEquals(
+			locator1 = "Form#FIELD_REFERENCE",
+			value1 = "${fieldValue}");
+	}
+
 	macro viewFieldReferenceFromTextField {
 		Click(
 			key_fieldName = "Text",
@@ -692,6 +704,8 @@ definition {
 		AssertTextEquals(
 			locator1 = "Form#FIELD_REFERENCE",
 			value1 = "${key_fieldReferenceText}");
+
+			
 	}
 
 	macro viewFormDescription {
