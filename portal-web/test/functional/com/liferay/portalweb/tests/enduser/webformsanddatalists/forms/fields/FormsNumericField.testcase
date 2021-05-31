@@ -29,7 +29,6 @@ definition {
 
 			Page.tearDownCP();
 		}
-
 	}
 
 	@description = "Verify that a Numeric Field can be created"
@@ -327,8 +326,6 @@ definition {
 		Form.viewFieldReference(
 			fieldLabel = "Numeric",
 			fieldValue = "Numeric1234");
-
-			
 	}
 
 	@description = "Verify that the Field Type can be changed"
